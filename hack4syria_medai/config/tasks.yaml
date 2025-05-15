@@ -1,0 +1,93 @@
+translation_from_ar:
+  description: >-
+    Translate the Arabic medical text {topic} to English, ensuring accurate translation of medical terminology,
+    symptoms, and patient complaints. Pay special attention to medical jargon, colloquial health
+    expressions, and regional variations in describing symptoms. Maintain the medical context and
+    severity indicators in the translation.    No follwoup questions are allowed. If image url is present in the input keep it in the final output.
+
+  expected_output: >-
+    A precise English translation of the medical text that preserves all medical terminology,
+    symptom descriptions, and context. The translation should be in clear, professional medical
+    language suitable for healthcare providers. It includes the image url if present in the original input. Do not add any information to the translated text.
+
+privacy_check:
+  description: >-
+    Analyze the translated text for any personally identifiable information (PII) and sensitive
+    health information. Apply WHO-compliant masking to protect patient privacy while preserving
+    medically relevant information. Check for and mask: names, dates of birth, addresses, contact
+    information, unique medical identifiers, and any other identifying details. o follwoup questions are allowed. If image url is present in the input keep it in the final output.
+  expected_output: >-
+    A privacy-compliant version of the medical text with all PII appropriately masked. Include confirmation of compliance
+    with WHO guidelines and relevant privacy standards. It includes the image url if present in the original input. Do not add any information to the masked text.
+
+information_gathering:
+  description: >-
+    Review the provided medical information and identify any gaps in the patient history or
+    symptoms. Generate relevant follow-up questions to gather complete information about:
+    primary symptoms, onset and progression, related symptoms, medical history, medications,
+    allergies, family history, and lifestyle factors. Ensure all information necessary for
+    accurate diagnosis is collected. If image url is present in the input keep it in the final output.
+  expected_output: >-
+    A comprehensive list of follow-up questions, organized by category (e.g., symptom details,
+    medical history, etc.). Include explanation of why each piece of information is needed.
+    Flag any critical missing information that could affect diagnosis. It includes the image url if present in the original input
+
+  
+image_analysis:
+  description: >-
+    check if an image url is present in the input, in that case, analyze the ECG scan image at the url and provide a detailed description integrated with the rest of the text in the input
+    if no url is present, returnt the input text as it is.
+  expected_output: >-
+    ccomprehensive reports containing all the information gathered up to this point, in addition to information from the image if the image is presentpresent.
+
+initial_diagnosis:
+  description: >-
+    Analyze all gathered patient information and image analysis to develop initial diagnostic hypotheses. Consider
+    the presentation, risk factors, and symptom patterns. Evaluate the urgency and severity
+    of the condition. Determine whether specialist consultation is needed, particularly for
+    cardiac issues. Create a prioritized list of potential diagnoses with reasoning.
+  expected_output: >-
+    A detailed diagnostic assessment including - prioritized differential diagnoses, confidence
+    levels for each potential diagnosis, urgency assessment, and clear recommendation for
+    either direct treatment or specialist referral. Include reasoning for all conclusions.
+
+cardiac_consultation:
+  description: >-
+    If cardiac involvement is suspected, perform specialized cardiac assessment. Analyze all
+    cardiac-relevant symptoms, risk factors, and historical information. Consider necessary
+    cardiac tests or monitoring. Evaluate emergency cardiac care needs. Provide specialized
+    cardiac diagnostic insights and treatment recommendations.
+  expected_output: >-
+    Detailed cardiac assessment including - specific cardiac diagnosis or differential diagnoses,
+    recommended cardiac tests or monitoring, treatment recommendations, urgency level, and
+    follow-up requirements. Include specific cardiac risk factors identified and their significance.
+
+medical_validation:
+  description: >-
+    Validate all diagnostic conclusions and treatment recommendations against current medical
+    literature and best practices. Search medical databases for relevant research, clinical
+    guidelines, and treatment protocols. Cross-reference presenting symptoms and proposed
+    diagnoses with established medical knowledge. Identify any recent relevant medical studies
+    or updated guidelines.
+  expected_output: >-
+    A validation report including - citations of relevant medical literature, confirmation of
+    alignment with current best practices, any contraindications or warnings identified, and
+    confidence scores for diagnostic conclusions. Include links to relevant studies and guidelines.
+
+final_report_generation:
+  description: >-
+    Synthesize all findings, validations, and recommendations into a comprehensive final
+    report. Include confidence scores for diagnoses, citations for medical evidence, and
+    clear treatment recommendations. 
+  expected_output: >-
+    A structured medical report including - final diagnosis or differential diagnoses with
+    confidence scores, supporting evidence and citations, recommended treatment plan or
+    specialist referral, urgency level, and follow-up recommendations.
+
+final_translation:
+  description: >-
+    Translate the final report from English to Arabic.
+  expected_output: >-
+    An accurate Arabic translation of the final report.
+
+

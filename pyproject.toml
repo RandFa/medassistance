@@ -1,0 +1,28 @@
+[project]
+name = "hack4syria_medai"
+version = "0.1.0"
+description = "hack4syria_medai using crewAI"
+authors = [{ name = "Anas Hamadeh", email = "a@a.a" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.102.0,<1.0.0",
+    "dotenv>=0.9.9",
+    "langchain>=0.3.19",
+    "langchain-community>=0.3.18",
+    "ruff>=0.9.7",
+    "xmltodict>=0.14.2",
+]
+
+[project.scripts]
+hack4syria_medai = "hack4syria_medai.main:run"
+run_crew = "hack4syria_medai.main:run"
+train = "hack4syria_medai.main:train"
+replay = "hack4syria_medai.main:replay"
+test = "hack4syria_medai.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
